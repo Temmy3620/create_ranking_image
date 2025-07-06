@@ -18,7 +18,7 @@ export default function RankingCard({ imageUrl, name, increment, rank }: Ranking
           <div className="bg-gray-700 w-full h-full" />
         )}
       </div>
-      <div className="bg-white text-black text-center font-bold text-4xl py-4">{name}</div>
+      <div className="bg-white text-black text-center font-bold text-2xl py-4">{name}</div>
       <div className="bg-gray-900 text-green-400 text-center text-5xl font-extrabold py-10">{increment}人</div>
       <div className="bg-gray-900 text-white text-center text-7xl font-bold py-4">{rank}位</div>
     </div>
