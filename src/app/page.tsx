@@ -68,14 +68,21 @@ export default function Home() {
           Download Image
         </button>
       )}
-      <main className="flex flex-col gap-[32px] items-center sm:items-start w-full">
+      <main className="flex flex-col gap-[32px] items-center sm:items-start w-160">
         {rankingData.length > 0 && (
-          <div
-            ref={imageRef}
-            className="bg-black overflow-x-auto overflow-y-hidden whitespace-nowrap flex flex-row"
-          >
-            <RankingList data={rankingData} />
-          </div>
+          <ScrollArea className="w-full rounded-md border whitespace-nowrap">
+            <div ref={imageRef} className="flex w-max space-x-4 p-4 bg-black">
+              {rankingData
+                .slice()
+                .sort((a, b) => b.rank - a.rank)
+                .map((item, index) => (
+                  <div key={`${item.channelId}-${index}`} className="shrink-0">
+                    <RankingList data={[item]} />
+                  </div>
+                ))}
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
         )}
       </main>
     </div>
