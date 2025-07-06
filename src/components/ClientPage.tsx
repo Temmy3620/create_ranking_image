@@ -76,6 +76,7 @@ export default function ClientPage() {
               <div className="w-60 h-40 bg-black rounded-lg" />
               <div className="w-60 h-40 bg-black rounded-lg" />
               <div className="w-60 h-40 bg-black rounded-lg" />
+              <div className="w-60 h-40 bg-black rounded-lg" />
               {rankingData
                 .slice()
                 .sort((a, b) => b.rank - a.rank)
