@@ -26,7 +26,7 @@ export default function Home() {
       } else {
         alert("JSON should be an array");
       }
-    } catch (e) {
+    } catch {
       alert("Invalid JSON");
     }
   };
