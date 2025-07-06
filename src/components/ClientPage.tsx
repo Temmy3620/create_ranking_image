@@ -73,6 +73,9 @@ export default function ClientPage() {
         {rankingData.length > 0 && (
           <ScrollArea className="w-full rounded-md border whitespace-nowrap">
             <div ref={imageRef} className="flex w-max space-x-4 p-4 bg-black">
+              <div className="w-60 h-40 bg-black rounded-lg" />
+              <div className="w-60 h-40 bg-black rounded-lg" />
+              <div className="w-60 h-40 bg-black rounded-lg" />
               {rankingData
                 .slice()
                 .sort((a, b) => b.rank - a.rank)
