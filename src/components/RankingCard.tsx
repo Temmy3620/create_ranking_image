@@ -6,9 +6,10 @@ type RankingCardProps = {
   name: string;
   increment: string;
   rank: number;
+  format: "subscribe" | "view";
 };
 
-export default function RankingCard({ imageUrl, name, increment, rank }: RankingCardProps) {
+export default function RankingCard({ imageUrl, name, increment, rank, format }: RankingCardProps) {
   return (
     <div className="w-[300px] rounded overflow-hidden shadow-md">
       <div className="relative w-full h-[300px]">
@@ -19,7 +20,11 @@ export default function RankingCard({ imageUrl, name, increment, rank }: Ranking
         )}
       </div>
       <div className="bg-white text-black text-center font-bold text-2xl py-4">{name}</div>
-      <div className="bg-gray-900 text-green-400 text-center text-5xl font-extrabold py-10">{increment}人</div>
+      {format === "subscribe" ? (
+        <div className="bg-gray-900 text-green-400 text-center text-5xl font-extrabold py-10">{"+" + Number(increment).toLocaleString()}人</div>
+      ) : (
+        <div className="bg-gray-900 text-green-400 text-center text-4xl font-extrabold py-10">{"+" + Number(increment).toLocaleString()}回</div>
+      )}
       <div className="bg-gray-900 text-white text-center text-7xl font-bold py-4">{rank}位</div>
     </div>
   );

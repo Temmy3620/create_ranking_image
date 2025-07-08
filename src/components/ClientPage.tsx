@@ -4,6 +4,11 @@ import { useState, useRef } from "react";
 import { toPng } from "html-to-image";
 import RankingList from "@/components/RankingList";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Label } from "@/components/ui/label"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/components/ui/radio-group"
 
 type RankingItem = {
   channelId: string;
@@ -14,6 +19,7 @@ type RankingItem = {
 
 export default function ClientPage() {
   const [inputValue, setInputValue] = useState("");
+  const [radioValue, setRadioValue] = useState("subscribe");
   const [rankingData, setRankingData] = useState<RankingItem[]>([]);
   const imageRef = useRef(null);
 
@@ -55,6 +61,19 @@ export default function ClientPage() {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
+      <RadioGroup
+        value={radioValue}
+        onValueChange={setRadioValue}
+        className="flex gap-4 py-4">
+        <div className="flex items-center gap-3">
+          <RadioGroupItem value="subscribe" id="r1" />
+          <Label htmlFor="r1">Subscribe</Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <RadioGroupItem value="view" id="r2" />
+          <Label htmlFor="r2">View</Label>
+        </div>
+      </RadioGroup>
       <button
         onClick={handleLoadData}
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -82,7 +101,7 @@ export default function ClientPage() {
                 .sort((a, b) => b.rank - a.rank)
                 .map((item, index) => (
                   <div key={`${item.channelId}-${index}`} className="shrink-0">
-                    <RankingList data={[item]} />
+                    <RankingList data={[item]} format={radioValue as "view" | "subscribe"} />
                   </div>
                 ))}
             </div>

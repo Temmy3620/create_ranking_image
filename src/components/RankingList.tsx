@@ -13,9 +13,10 @@ type RankingItem = {
 
 type Props = {
   data: RankingItem[];
+  format: "subscribe" | "view";
 };
 
-export default function RankingList({ data }: Props) {
+export default function RankingList({ data, format }: Props) {
   const [imageUrls, setImageUrls] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function RankingList({ data }: Props) {
           name={item.name}
           increment={item.increment}
           rank={item.rank}
+          format={format}
         />
       ))}
     </div>
