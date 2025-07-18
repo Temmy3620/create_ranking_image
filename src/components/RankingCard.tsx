@@ -6,7 +6,7 @@ type RankingCardProps = {
   name: string;
   increment: string;
   rank: number;
-  format: "subscribe" | "view";
+  format: "video" | "subscribe" | "view";
 };
 
 export default function RankingCard({ imageUrl, name, increment, rank, format }: RankingCardProps) {
@@ -20,7 +20,9 @@ export default function RankingCard({ imageUrl, name, increment, rank, format }:
         )}
       </div>
       <div className="bg-white text-black text-center font-bold text-2xl py-4">{name}</div>
-      {format === "subscribe" ? (
+      {format === "video" ? (
+        <div className="bg-gray-900 text-green-400 text-center text-5xl font-extrabold py-10">{"+" + Number(increment).toLocaleString()}本</div>
+      ) : format === "subscribe" ? (
         <div className="bg-gray-900 text-green-400 text-center text-5xl font-extrabold py-10">{"+" + Number(increment).toLocaleString()}人</div>
       ) : (
         <div className="bg-gray-900 text-green-400 text-center text-4xl font-extrabold py-10">{"+" + Number(increment).toLocaleString()}回</div>

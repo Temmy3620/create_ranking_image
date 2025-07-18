@@ -73,6 +73,10 @@ export default function ClientPage() {
           <RadioGroupItem value="view" id="r2" />
           <Label htmlFor="r2">View</Label>
         </div>
+        <div className="flex items-center gap-3">
+          <RadioGroupItem value="video" id="r2" />
+          <Label htmlFor="r2">Video</Label>
+        </div>
       </RadioGroup>
       <button
         onClick={handleLoadData}
@@ -101,7 +105,7 @@ export default function ClientPage() {
                 .sort((a, b) => b.rank - a.rank)
                 .map((item, index) => (
                   <div key={`${item.channelId}-${index}`} className="shrink-0">
-                    <RankingList data={[item]} format={radioValue as "view" | "subscribe"} />
+                    <RankingList data={[item]} format={radioValue as "video" | "view" | "subscribe"} />
                   </div>
                 ))}
             </div>

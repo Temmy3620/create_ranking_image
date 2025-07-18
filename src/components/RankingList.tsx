@@ -13,7 +13,7 @@ type RankingItem = {
 
 type Props = {
   data: RankingItem[];
-  format: "subscribe" | "view";
+  format: "video" | "subscribe" | "view";
 };
 
 export default function RankingList({ data, format }: Props) {
